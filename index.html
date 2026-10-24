@@ -1,0 +1,812 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alfon Casquejo | Portfolio</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg: #070b18;
+    --panel: #10182c;
+    --cyan: #00e5ff;
+    --purple: #a855f7;
+    --text: #f4f7ff;
+    --muted: #a6b2cc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+section {
+    padding: 110px 8%;
+    scroll-margin-top: 75px;
+}
+
+/* ANIMATED BACKGROUND */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        radial-gradient(ellipse at 15% 20%, #12305b 0%, transparent 38%),
+        radial-gradient(ellipse at 85% 75%, #281347 0%, transparent 35%),
+        #070b18;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+        linear-gradient(#ffffff08 1px, transparent 1px),
+        linear-gradient(90deg, #ffffff08 1px, transparent 1px);
+    background-size: 45px 45px;
+    animation: gridMove 18s linear infinite;
+}
+
+@keyframes gridMove {
+    from { background-position: 0 0; }
+    to { background-position: 45px 45px; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 15px #00e5ff22; }
+    50% { box-shadow: 0 0 35px #00e5ff55; }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gradientText {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* NAVIGATION */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    z-index: 100;
+    background: #070b18d9;
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid #ffffff12;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--cyan);
+    white-space: nowrap;
+}
+
+.logo span {
+    color: white;
+}
+
+nav {
+    display: flex;
+    gap: 22px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+nav a {
+    color: #c3cce0;
+    font-size: 12px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: var(--cyan);
+    text-shadow: 0 0 12px var(--cyan);
+}
+
+/* HOME */
+
+#home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 55px;
+    padding-top: 140px;
+}
+
+.home-content {
+    max-width: 650px;
+    animation: fadeUp 1s ease both;
+}
+
+.eyebrow {
+    color: var(--cyan);
+    letter-spacing: 4px;
+    font-size: 12px;
+    margin-bottom: 22px;
+}
+
+.home-content h1 {
+    font-size: clamp(38px, 6vw, 72px);
+    line-height: 1.13;
+    font-weight: 700;
+}
+
+.gradient {
+    background: linear-gradient(90deg, #00e5ff, #a855f7, #00e5ff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientText 5s linear infinite;
+}
+
+.home-content h2 {
+    color: #d1d9ec;
+    font-size: clamp(18px, 2.5vw, 25px);
+    font-weight: 400;
+    margin: 20px 0;
+}
+
+.home-content p {
+    color: var(--muted);
+    line-height: 1.9;
+    max-width: 540px;
+    font-size: 14px;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+}
+
+.btn {
+    padding: 13px 23px;
+    border: 1px solid var(--cyan);
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: .35s;
+}
+
+.btn.primary {
+    background: var(--cyan);
+    color: #07111f;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px #00e5ff55;
+}
+
+.profile-area {
+    flex-shrink: 0;
+    width: min(300px, 70vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: 8px;
+    border: 2px solid var(--cyan);
+    animation: float 5s ease-in-out infinite, glow 4s ease-in-out infinite;
+    background: linear-gradient(135deg, #00e5ff33, #a855f733);
+}
+
+.profile-area img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 50%;
+    background: #121b31;
+}
+
+.profile-placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--cyan);
+    font-size: 13px;
+    padding: 20px;
+    background: #10182c;
+}
+
+/* SECTION TITLES */
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.section-heading small {
+    color: var(--cyan);
+    letter-spacing: 4px;
+    font-size: 11px;
+}
+
+.section-heading h2 {
+    font-size: clamp(30px, 4vw, 43px);
+    margin-top: 12px;
+}
+
+.section-heading h2 span {
+    color: var(--cyan);
+}
+
+/* ABOUT */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 28px;
+}
+
+.panel {
+    padding: 30px;
+    border: 1px solid #ffffff17;
+    border-radius: 22px;
+    background: linear-gradient(145deg, #141e35dd, #0d1325ee);
+    transition: .35s;
+}
+
+.panel:hover {
+    transform: translateY(-7px);
+    border-color: #00e5ff77;
+    box-shadow: 0 15px 40px #00000035;
+}
+
+.panel h3 {
+    color: var(--cyan);
+    margin-bottom: 17px;
+    font-size: 20px;
+}
+
+.panel p {
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 14px;
+}
+
+.hobby-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.hobby {
+    padding: 10px 15px;
+    border: 1px solid #00e5ff33;
+    border-radius: 25px;
+    background: #00e5ff0c;
+    color: #dffaff;
+    font-size: 12px;
+    transition: .3s;
+}
+
+.hobby:hover {
+    background: #00e5ff;
+    color: #07111f;
+    transform: scale(1.05);
+}
+
+/* EXPERIENCE */
+
+.experience-card {
+    max-width: 850px;
+    margin: auto;
+    padding: 35px;
+    border-radius: 25px;
+    border: 1px solid #00e5ff44;
+    background: linear-gradient(130deg, #111c32, #17102b);
+    position: relative;
+    overflow: hidden;
+}
+
+.experience-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(var(--cyan), var(--purple));
+}
+
+.experience-card .date {
+    color: var(--cyan);
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.experience-card h3 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.experience-card h4 {
+    color: #c3a2ff;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.experience-card p {
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 14px;
+}
+
+.experience-photo {
+    width: 100%;
+    height: 260px;
+    margin-top: 25px;
+    border: 1px dashed #00e5ff77;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #080e1d;
+}
+
+.experience-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-placeholder {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #91a2c0;
+    padding: 20px;
+    font-size: 13px;
+}
+
+/* SAMPLE PROJECTS */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.project-card {
+    border-radius: 22px;
+    padding: 30px;
+    background: linear-gradient(145deg, #141e35, #0d1325);
+    border: 1px solid #ffffff17;
+    transition: .35s;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card:hover {
+    transform: translateY(-9px);
+    border-color: var(--purple);
+    box-shadow: 0 15px 40px #a855f722;
+}
+
+.project-number {
+    font-family: 'Orbitron', sans-serif;
+    color: #00e5ff66;
+    font-size: 38px;
+    margin-bottom: 18px;
+}
+
+.project-card h3 {
+    margin-bottom: 13px;
+    font-size: 21px;
+}
+
+.project-card p {
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 22px;
+}
+
+.tags span {
+    padding: 7px 12px;
+    border-radius: 20px;
+    color: var(--cyan);
+    background: #00e5ff10;
+    border: 1px solid #00e5ff22;
+    font-size: 11px;
+}
+
+/* CONTACT */
+
+.contact-box {
+    max-width: 950px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.social-card {
+    padding: 30px 18px;
+    text-align: center;
+    border-radius: 22px;
+    background: linear-gradient(145deg, #141e35, #0c1324);
+    border: 1px solid #ffffff18;
+    transition: .35s;
+    overflow-wrap: anywhere;
+}
+
+.social-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--cyan);
+    box-shadow: 0 0 28px #00e5ff18;
+}
+
+.social-icon {
+    height: 62px;
+    width: 62px;
+    margin: 0 auto 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    font-size: 28px;
+    font-weight: 700;
+    background: #00e5ff13;
+    color: var(--cyan);
+    border: 1px solid #00e5ff35;
+}
+
+.social-card h3 {
+    margin-bottom: 8px;
+}
+
+.social-card p {
+    color: var(--muted);
+    font-size: 12px;
+    min-height: 38px;
+    margin-bottom: 20px;
+}
+
+.social-card a {
+    display: inline-block;
+    color: var(--cyan);
+    border: 1px solid #00e5ff66;
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-size: 12px;
+    transition: .3s;
+}
+
+.social-card a:hover {
+    color: #07111f;
+    background: var(--cyan);
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #8390aa;
+    border-top: 1px solid #ffffff12;
+    font-size: 12px;
+}
+
+/* MOBILE */
+
+@media (max-width: 850px) {
+    header {
+        padding: 16px 5%;
+        flex-wrap: wrap;
+    }
+
+    nav {
+        gap: 13px;
+    }
+
+    nav a {
+        font-size: 11px;
+    }
+
+    #home {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-top: 150px;
+    }
+
+    .home-content p {
+        margin: auto;
+    }
+
+    .buttons {
+        justify-content: center;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    section {
+        padding: 85px 6%;
+    }
+
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .project-grid,
+    .contact-box {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-card {
+        padding: 25px;
+    }
+
+    .experience-card h3 {
+        font-size: 20px;
+    }
+}
+
+/* ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a href="#home" class="logo">AC<span>.</span></a>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Sample Project</a>
+        <a href="#contact">Contact Me</a>
+    </nav>
+</header>
+
+<!-- HOME -->
+<section id="home">
+    <div class="home-content">
+        <div class="eyebrow">WELCOME TO MY PORTFOLIO</div>
+
+        <h1>Hi, I'm <span class="gradient">Alfon Casquejo</span></h1>
+
+        <h2>BSIT 1st Year Student</h2>
+
+        <p>
+            An aspiring IT professional who enjoys exploring technology,
+            learning new skills, and discovering the world of coding.
+            This portfolio showcases my experiences, interests, and
+            journey as a beginner in Information Technology.
+        </p>
+
+        <div class="buttons">
+            <a href="#projects" class="btn primary">Explore My Work ↗</a>
+            <a href="#contact" class="btn">Contact Me</a>
+        </div>
+    </div>
+
+    <div class="profile-area">
+       <img src="ALFON.png" alt="Alfon Casquejo">
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="section-heading">
+        <small>GET TO KNOW ME</small>
+        <h2>About <span>Me</span></h2>
+    </div>
+
+    <div class="about-grid">
+        <div class="panel">
+            <h3>Who Am I?</h3>
+            <p>
+                I am Alfon Casquejo, a first-year Bachelor of Science
+                in Information Technology (BSIT) student. I am currently
+                learning the fundamentals of coding, including HTML,
+                CSS, and Programming 1. I am eager to improve my skills,
+                gain experience, and learn more about technology.
+            </p>
+        </div>
+
+        <div class="panel">
+            <h3>My Interests & Hobbies</h3>
+            <p>
+                Outside my studies, I enjoy activities that help me
+                relax, stay active, and discover new experiences.
+                These hobbies also help me develop teamwork and
+                creativity.
+            </p>
+
+            <div class="hobby-list">
+                <span class="hobby">🏀 Basketball</span>
+                <span class="hobby">🏸 Badminton</span>
+                <span class="hobby">🎵 Listening to Music</span>
+                <span class="hobby">✈️ Travelling</span>
+                <span class="hobby">💻 Technology</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+    <div class="section-heading">
+        <small>MY JOURNEY</small>
+        <h2>My <span>Experience</span></h2>
+    </div>
+
+    <div class="experience-card">
+        <div class="date">WORK IMMERSION</div>
+
+        <h3>Engineering Department</h3>
+        <h4>Municipality of Cordova, Cebu</h4>
+
+        <p>
+            During my work immersion at the Engineering Department of
+            the Municipality of Cordova, Cebu, I experienced how an
+            office operates and how employees manage documents and
+            daily tasks. This experience helped me understand the
+            importance of responsibility, teamwork, discipline, and
+            proper communication in a professional environment.
+        </p>
+
+        <div class="experience-photo">
+           <img src="immersion.png" alt="Engineering Department immersion">
+        </div>
+    </div>
+</section>
+
+<!-- SAMPLE PROJECT -->
+<section id="projects">
+    <div class="section-heading">
+        <small>WHAT I'VE LEARNED</small>
+        <h2>Sample <span>Projects</span></h2>
+    </div>
+
+    <div class="project-grid">
+        <div class="project-card">
+            <div class="project-number">01</div>
+            <h3>HTML & CSS</h3>
+            <p>
+                I learned the basics of HTML and CSS and practiced
+                creating and styling simple web pages. This helped
+                me understand webpage structure, colors, layouts,
+                text styling, and basic design.
+            </p>
+
+            <div class="tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>Web Design</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-number">02</div>
+            <h3>Programming 1</h3>
+            <p>
+                I gained basic knowledge of programming concepts,
+                including variables, data types, input and output,
+                operators, and simple C++ code exercises. I am
+                continuing to practice and improve my coding skills.
+            </p>
+
+            <div class="tags">
+                <span>C++</span>
+                <span>Programming Basics</span>
+                <span>Learning</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="section-heading">
+        <small>LET'S CONNECT</small>
+        <h2>Contact <span>Me</span></h2>
+    </div>
+
+    <div class="contact-box">
+        <div class="social-card">
+            <div class="social-icon">f</div>
+            <h3>Facebook</h3>
+            <p>Alfon Casquejo</p>
+            <a href="https://web.facebook.com/alfonbhuang" target="_blank"
+               rel="noopener noreferrer">Visit Facebook ↗</a>
+        </div>
+
+        <div class="social-card">
+            <div class="social-icon">◎</div>
+            <h3>Instagram</h3>
+            <p>@aplonnnn</p>
+            <a href="https://www.instagram.com/aplonnnn/"
+               target="_blank" rel="noopener noreferrer">
+               Visit Instagram ↗
+            </a>
+        </div>
+
+        <div class="social-card">
+            <div class="social-icon">✉</div>
+            <h3>Gmail</h3>
+            <p>alfoncasquejo10@gmail.com</p>
+            <a href="mailto:alfoncasquejo10@gmail.com">
+                Send Email ↗
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 Alfon Casquejo | Designed with passion and creativity.
+</footer>
+
+</body>
+</html>
